@@ -31,7 +31,7 @@ def load(path):
         lc_interp = np.copy(lc)
         x = lambda z: z.nonzero()[0]
         lc_interp = np.interp(x(quality), x(~quality), lc_interp[~quality])
-    return lc_interp, os.path.basename(h5path)
+    return lc_interp
 
 def main():
     df = pd.read_csv(csvpath, names=["path", "label"])
@@ -44,7 +44,7 @@ def main():
         lc_list = []
         #読み込み
         with mp.Pool(2) as p:
-            for lc, path in p.map(load, tqdm(path_list)):
+            for lc in p.map(load, tqdm(path_list)):
                 lc_list.append(lc)
         lc_array = np.vstack(tuple(lc_list))
         #書き出し
