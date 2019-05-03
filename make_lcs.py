@@ -43,7 +43,7 @@ def main():
         path_list = tar_df["path"].values
         lc_list = []
         #読み込み
-        with mp.Pool(2) as p:
+        with mp.Pool(mp.cpu_count()) as p:
             for lc in p.map(load, tqdm(path_list)):
                 lc_list.append(lc)
         lc_array = np.vstack(tuple(lc_list))
