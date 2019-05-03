@@ -44,7 +44,7 @@ def main():
         lc_list = []
         #読み込み
         with mp.Pool(mp.cpu_count()) as p:
-            for lc in p.map(load, tqdm(path_list)):
+            for lc in p.imap(load, tqdm(path_list)):
                 lc_list.append(lc)
         lc_array = np.vstack(tuple(lc_list))
         #書き出し
