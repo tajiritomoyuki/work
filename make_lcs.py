@@ -4,7 +4,7 @@ import glob
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from multiprocessing as mp
+import multiprocessing as mp
 import h5py
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
