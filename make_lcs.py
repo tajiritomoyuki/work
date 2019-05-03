@@ -4,6 +4,7 @@ import glob
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from itertools import product
 import multiprocessing as mp
 import h5py
 
