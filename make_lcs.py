@@ -36,7 +36,7 @@ def main():
     df = pd.read_csv(csvpath, names=["path", "label"])
     f_sector = lambda x: int(x.split("_")[2])
     sector_df = df["path"].map(f_sector)
-    df["sector"] = sector
+    df["sector"] = sector_df
     for label, sector in product([0, 1], [1, 2, 3, 5]):
         tar_df = df[(df["sector"] == sector) & (df["label"] == label)]
         path_list = tar_df["path"].values
