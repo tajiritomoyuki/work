@@ -30,7 +30,7 @@ def load(path):
             lc = flux / mid_val
         lc_interp = np.copy(lc)
         x = lambda z: z.nonzero()[0]
-        lc_interp = [quality] = np.interp(x(quality), x(~quality), lc_interp[~quality])
+        lc_interp = np.interp(x(quality), x(~quality), lc_interp[~quality])
     return lc_interp, os.path.basename(h5path)
 
 def main():
